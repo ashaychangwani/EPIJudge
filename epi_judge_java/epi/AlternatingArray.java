@@ -8,8 +8,27 @@ import epi.test_framework.TimedExecutor;
 import java.util.ArrayList;
 import java.util.List;
 public class AlternatingArray {
+  public static void swap(List<Integer> A, int i, int j){
+    int temp = A.get(i);
+    A.set(i, A.get(j));
+    A.set(j, temp);
+    return;
+  }
   public static void rearrange(List<Integer> A) {
-    // TODO - you fill in here.
+    int index = 0;
+    if(A.size() == 1)
+      return;
+    int i = 0;
+    int j = 1;
+    while(j<A.size()){
+      if(index%2==0 && A.get(j)<A.get(i))
+          swap(A, i, j);
+      else if(index%2==1 && A.get(j)>A.get(i))
+          swap(A,i,j);
+      i++;
+      j++;
+      index++;
+    }
     return;
   }
   private static void checkOrder(List<Integer> A) throws TestFailure {
